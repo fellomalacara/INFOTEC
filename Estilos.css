@@ -1,0 +1,76 @@
+:root {
+    --primary: #621132;
+    ;
+    --light: #969092;
+    --grey: #621132;
+    --texts-col: #621132;
+}
+
+body {
+    overflow: hidden;
+    font-weight: 300;
+    color: var(--texts-col);
+    font-family: 'Roboto Condensed', sans-serif;
+    background-color: #fafafa;
+}
+
+.bg-primary {
+    background-color: var(--primary)!important;
+}
+
+#sidebar-container {
+    min-height: 80 vh;
+}
+
+.stat {
+    border-right: 1px solid var(--grey);
+}
+
+a:hover {
+    text-decoration: none;
+    size: 25px;
+    color: #621132;
+}
+
+#sidebar-container .logo {
+    padding: .875rem 1.25rem;
+}
+
+#sidebar-container .menu {
+    width: 18rem;
+}
+
+#content {
+    overflow: auto;
+    height: 100vh;
+    padding-bottom: 5rem;
+}
+
+.menu {
+    color: var(--texts-col);
+}
+
+table {
+    margin: 0 auto;
+    text-align: center;
+    border-collapse: collapse;
+    border: 1px solid #d4d4d4;
+}
+
+tr:nth-child(even) {
+    background: #d4d4d4;
+}
+
+th,
+td {
+    padding: 10px 30px;
+}
+
+th {
+    border-bottom: 1px solid #d4d4d4;
+}
+
+#principal h1 {
+    font-size: 80px;
+    padding: 40;
+}

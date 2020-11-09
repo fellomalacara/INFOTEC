@@ -1,0 +1,662 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="apple-touch-icon" sizes="57x57" href="/assets/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/assets/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/assets/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/assets/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/assets/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/assets/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/assets/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/assets/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/assets/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/assets/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <script src="https://unpkg.com/ionicons@5.2.3/dist/ionicons.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="Estilos.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.8/xlsx.full.min.js"></script>
+
+    <title>INFOTEC | INCIDENTES</title>
+</head>
+
+<body>
+    <div class="d-flex">
+        <div id="sidebar-container" class="bg-primary">
+            <div class="logo">
+                <h4 class="text-light font-weight-bold">Tablero de metricas</h4>
+            </div>
+            <section>
+                <div class="menu">
+                    <a href="/" class="d-block text-light p-3 mt-5 ">
+                        <i class=" icon ion-md-apps mx-auto"><ion-icon name="apps" class="mr-2 lead"></ion-icon></i>General</a>
+                    <a href="./dashboard.html" class="d-block text-light p-3">
+                        <i class=" icon ion-md-apps"><ion-icon name="close-circle"class="mr-2 lead"></ion-icon></i>Incidentes</a>
+                    <a href="/WO.html" class="d-block text-light p-3">
+                        <i class=" icon ion-md-apps"><ion-icon name="checkmark-circle" class="mr-2 lead"></ion-icon></i>Ordenes de trabajo</a>
+                    <a href="/PBI.html" class="d-block text-light p-3">
+                        <i class=" icon ion-md-apps"><ion-icon name="construct" class="mr-2 lead"></ion-icon></i>Problemas</a>
+                    <a href="/CRQ.html" class="d-block text-light p-3">
+                        <i class=" icon ion-md-apps"><ion-icon name="hammer" class="mr-2 lead"></ion-icon></i>Cambios</a>
+                    <a href="/Contactos.html" class="d-block text-light p-3">
+                        <i class=" icon ion-md-apps"><ion-icon name="hammer" class="mr-2 lead"></ion-icon></i>Contactos</a>
+                </div>
+        </div>
+
+
+        <div class="w-100">
+
+            <nav class="navbar navbar-light bg-light">
+                <a class="navbar-brand" href="#">
+                    <img src="assets/LOGO.png" width="200" height="50" class="d-inline-block align-top" alt="" loading="lazy">
+                </a>
+            </nav>
+            </section>
+
+            <div id="content">
+                <section>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-9 mt-4">
+                                <h1 class="font-weight-bold mb-0">SOLICITUDES DE SERVICIO</h1>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <div class="container">
+                        <div class="card border-right-0 shadow p-3 mb-5 bg-white rounded">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-lg-4 stat my-2">
+                                        <h5 class="text-muted text-center">TICKETS GENERADOS</h5>
+                                        <h1 class="center mx-auto text-center" id="INC">SIN ACTUALIZAR</h1>
+                                        <canvas id="satisfaccion"></canvas>
+
+                                        </h1>
+
+                                    </div>
+                                    <div class="col-lg-8 stat my-2">
+                                        <h5 class="text-muted text-center chart-container">SOLICITUDES</h5>
+                                        <br>
+                                        <canvas id="INC_generados" height="100px"></canvas>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <br>
+                <section>
+                    <div class="container">
+                        <div class="card border-right-0 shadow p-3 mb-5 bg-white rounded white">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-lg-6 stat my-2">
+                                        <h5 class="text-muted text-center center text-wrap">ESTATUS</h5>
+                                        <canvas id="STATUS"></canvas>
+                                    </div>
+                                    <div class="col-lg-6 my-2">
+                                        <h4 class="text-muted text-center mx-auto">ORGANIZACIONES</h4>
+                                        <table class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">#</th>
+                                                    <th scope="col">Nombre</th>
+                                                    <th scope="col">Número Tickets</th>
+
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+
+                                                    <th scope="row">1</th>
+                                                    <td>
+                                                        <h6 class="center mx-auto text-center" id="TABLEORG1">SIN ACTUALIZAR</h6>
+                                                    </td>
+                                                    <td>
+                                                        <h6 class="center mx-auto text-center" id="TABLEORG2">SIN ACTUALIZAR</h6>
+                                                    </td>
+
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">2</th>
+                                                    <td>
+                                                        <h6 class="center mx-auto text-center" id="TABLEORG3">SIN ACTUALIZAR</h6>
+                                                    </td>
+                                                    <td>
+                                                        <h6 class="center mx-auto text-center" id="TABLEORG4">SIN ACTUALIZAR</h6>
+                                                    </td>
+
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">3</th>
+                                                    <td>
+                                                        <h6 class="center mx-auto text-center" id="TABLEORG5">SIN ACTUALIZAR</h6>
+                                                    </td>
+                                                    <td>
+                                                        <h6 class="center mx-auto text-center" id="TABLEORG6">SIN ACTUALIZAR</h6>
+                                                    </td>
+
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">4</th>
+                                                    <td>
+                                                        <h6 class="center mx-auto text-center" id="TABLEORG7">SIN ACTUALIZAR</h6>
+                                                    </td>
+                                                    <td>
+                                                        <h6 class="center mx-auto text-center" id="TABLEORG8">SIN ACTUALIZAR</h6>
+                                                    </td>
+
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">5</th>
+                                                    <td>
+                                                        <h6 class="center mx-auto text-center" id="TABLEORG9">SIN ACTUALIZAR</h6>
+                                                    </td>
+                                                    <td>
+                                                        <h6 class="center mx-auto text-center" id="TABLEORG10">SIN ACTUALIZAR</h6>
+                                                    </td>
+
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </section>
+                <br>
+                <section>
+                    <div class="container">
+                        <div class="card border-right-0 shadow p-3 mb-5 bg-white rounded">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <h5 class="text-center">TOP GRUPOS RESOLUTORES</h5>
+                                        <canvas id="GPO" height="250PX"></canvas>
+                                    </div>
+                                    <div class="col-lg-6 my-2">
+                                        <h5 class="text-muted text-center">TOP ANALISTAS</h5>
+                                        <table class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">#</th>
+                                                    <th scope="col">Nombre</th>
+                                                    <th scope="col">Número Tickets</th>
+
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+
+                                                    <th scope="row">1</th>
+                                                    <td>
+                                                        <h6 class="center mx-auto text-center" id="TABLE1">SIN ACTUALIZAR</h6>
+                                                    </td>
+                                                    <td>
+                                                        <h6 class="center mx-auto text-center" id="TABLE2">SIN ACTUALIZAR</h6>
+                                                    </td>
+
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">2</th>
+                                                    <td>
+                                                        <h6 class="center mx-auto text-center" id="TABLE3">SIN ACTUALIZAR</h6>
+                                                    </td>
+                                                    <td>
+                                                        <h6 class="center mx-auto text-center" id="TABLE4">SIN ACTUALIZAR</h6>
+                                                    </td>
+
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">3</th>
+                                                    <td>
+                                                        <h6 class="center mx-auto text-center" id="TABLE5">SIN ACTUALIZAR</h6>
+                                                    </td>
+                                                    <td>
+                                                        <h6 class="center mx-auto text-center" id="TABLE6">SIN ACTUALIZAR</h6>
+                                                    </td>
+
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">4</th>
+                                                    <td>
+                                                        <h6 class="center mx-auto text-center" id="TABLE7">SIN ACTUALIZAR</h6>
+                                                    </td>
+                                                    <td>
+                                                        <h6 class="center mx-auto text-center" id="TABLE8">SIN ACTUALIZAR</h6>
+                                                    </td>
+
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">5</th>
+                                                    <td>
+                                                        <h6 class="center mx-auto text-center" id="TABLE9">SIN ACTUALIZAR</h6>
+                                                    </td>
+                                                    <td>
+                                                        <h6 class="center mx-auto text-center" id="TABLE10">SIN ACTUALIZAR</h6>
+                                                    </td>
+
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section>
+                    <div class="container">
+                        <div class="card border-right-0 shadow p-3 mb-5 bg-white rounded col-lg-12">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <h5 class="text-center">FUENTE REPORTADA</h5>
+                                        <canvas id="FONT" height="150PX"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <br>
+                <br>
+                <br>
+            </div>
+            <script>
+                var url = "./cubo.xlsx";
+                var oReq = new XMLHttpRequest();
+                oReq.open("GET", url, true);
+                oReq.responseType = "arraybuffer";
+
+                oReq.onload = function(e) {
+
+                    var info = readData();
+                    /*************************************/
+                    let INCTOP = [
+                        info[0],
+                    ]
+                    console.log(info);
+                    let inc = INCTOP.map(item => item.countINC);
+                    document.getElementById("INC").innerHTML = inc;
+
+                    var info = readData();
+                    let MESTOP = [
+                        info[0],
+                        info[1],
+                        info[2],
+                        info[3],
+                        info[4],
+
+                    ]
+
+
+                    let print = MESTOP.map(item => item.MESINC);
+                    let Cprint = MESTOP.map(item => item.CMESINC);
+
+
+
+                    /********************* CHARTS*******************************/
+                    function totalcaseschartinc(ctx) {
+                        const chart = new Chart(ctx, {
+                            type: 'bar',
+                            data: {
+                                labels: MESTOP.map(item => item.MESINC),
+                                datasets: [{
+                                    label: '2020',
+                                    data: MESTOP.map(item => item.CMESINC),
+                                    backgroundColor: 'rgba(98, 17, 50,0.8)',
+                                }]
+
+                            }
+
+                        })
+                    }
+
+                    function renderchartinc() {
+                        const ctx = document.querySelector('#INC_generados').getContext('2d')
+                        totalcaseschartinc(ctx)
+                    }
+                    renderchartinc()
+
+                    /*************************************/
+
+                    let ESTAP = [
+                        info[0],
+                        info[1],
+                        info[2],
+                        info[3],
+                        info[4],
+
+                    ]
+
+
+                    console.log(ESTAP)
+                        /*****************************************************/
+
+                    let status = ESTAP.map(item => item.STATUSINC);
+                    let cstatus = ESTAP.map(item => item.CSTATUCINC);
+                    console.log(cstatus);
+
+                    function totalcaseschartstatus(ctx) {
+                        const chart = new Chart(ctx, {
+                            type: 'bar',
+                            data: {
+                                labels: ESTAP.map(item => item.STATUSINC),
+                                datasets: [{
+                                    label: '2020',
+                                    data: ESTAP.map(item => item.CSTATUCINC),
+                                    backgroundColor: ['rgba(255, 99, 132)',
+                                        'rgba(54, 162, 235)',
+                                        'rgba(255, 206, 86)',
+                                        'rgba(75, 192, 192)',
+                                        'rgba(153, 102, 255)',
+                                        'rgba(255, 159, 64)'
+                                    ],
+                                    hoverBackgroundColor: 'rgba(98, 17, 50,0.8)'
+                                }]
+
+                            }
+
+                        })
+                    }
+
+                    function renderchartstatus() {
+                        const ctx = document.querySelector('#STATUS').getContext('2d')
+                        totalcaseschartstatus(ctx)
+                    }
+                    renderchartstatus()
+                        /*****************************************************/
+                    let Satisfa = [
+                        info[0],
+                        info[1],
+
+
+                    ]
+
+
+                    console.log(Satisfa)
+                        /*****************************************************/
+
+                    let value1 = Satisfa.map(item => item.Satisfaction);
+                    let value2 = Satisfa.map(item => item.CountSatis);
+                    console.log(value1);
+                    console.log(value2);
+
+                    function totalcaseschartsat(ctx) {
+                        const chart = new Chart(ctx, {
+                            type: 'pie',
+                            data: {
+                                labels: Satisfa.map(item => item.Satisfaction),
+                                datasets: [{
+                                    label: '2020',
+                                    data: Satisfa.map(item => item.CountSatis),
+                                    backgroundColor: ['rgba(255, 99, 132, 0.2)',
+                                        'rgba(54, 162, 235, 0.2)',
+                                        'rgba(255, 206, 86, 0.2)',
+                                        'rgba(75, 192, 192, 0.2)',
+                                        'rgba(153, 102, 255, 0.2)',
+                                        'rgba(255, 159, 64, 0.2)'
+                                    ],
+                                    hoverBackgroundColor: 'rgba(98, 17, 50,0.8)'
+                                }]
+
+                            }
+
+                        })
+                    }
+
+                    function rendersatisfaction() {
+                        const ctx = document.querySelector('#satisfaccion').getContext('2d')
+                        totalcaseschartsat(ctx)
+                    }
+                    rendersatisfaction()
+                        /*****************************************************/
+                    let GPOAP = [
+                        info[0],
+                        info[1],
+                        info[2],
+                        info[3],
+                        info[4],
+
+                    ]
+
+
+                    console.log(GPOAP)
+
+                    let Grupos = GPOAP.map(item => item.GRUPOINC);
+                    let cgrupos = GPOAP.map(item => item.CGRUPINC);
+                    console.log(Grupos);
+                    console.log(cgrupos);
+
+
+                    function totalcaseschartGRUPO(ctx) {
+                        const chart = new Chart(ctx, {
+                            type: 'bar',
+                            data: {
+                                labels: GPOAP.map(item => item.GRUPOINC),
+                                datasets: [{
+                                    label: '2020',
+                                    data: GPOAP.map(item => item.CGRUPINC),
+                                    backgroundColor: ['rgba(255, 99, 132)',
+                                        'rgba(54, 162, 235 )',
+                                        'rgba(255, 206, 86 )',
+                                        'rgba(75, 192, 192 )',
+                                        'rgba(153, 102, 255 )',
+                                        'rgba(255, 159, 64 )'
+                                    ],
+                                    hoverBackgroundColor: 'rgba(98, 17, 50,0.8)'
+                                }]
+
+                            }
+
+                        })
+                    }
+
+                    function renderchartgpo() {
+                        const ctx = document.querySelector('#GPO').getContext('2d')
+                        totalcaseschartGRUPO(ctx)
+                    }
+                    renderchartgpo()
+
+
+                    let RESOLAP = [
+                        info[0],
+                    ]
+                    let RESOLAP1 = [
+                        info[1],
+                    ]
+                    let RESOLAP2 = [
+                        info[2],
+                    ]
+                    let RESOLAP3 = [
+                        info[3],
+                    ]
+                    let RESOLAP4 = [
+                        info[4],
+                    ]
+                    let number2 = RESOLAP.map(item => item.USUARIOINC);
+                    document.getElementById("TABLE1").innerHTML = number2;
+
+                    let cresolutor = RESOLAP.map(item => item.CUSUARIOINC);
+                    document.getElementById("TABLE2").innerHTML = cresolutor;
+
+                    let resolutor1 = RESOLAP1.map(item => item.USUARIOINC);
+                    document.getElementById("TABLE3").innerHTML = resolutor1;
+                    let cresolutor1 = RESOLAP1.map(item => item.CUSUARIOINC);
+                    document.getElementById("TABLE4").innerHTML = cresolutor1;
+
+
+                    let resolutor2 = RESOLAP2.map(item => item.USUARIOINC);
+                    document.getElementById("TABLE5").innerHTML = resolutor2;
+                    let cresolutor2 = RESOLAP2.map(item => item.CUSUARIOINC);
+                    document.getElementById("TABLE6").innerHTML = cresolutor2;
+
+
+                    let resolutor3 = RESOLAP3.map(item => item.USUARIOINC);
+                    document.getElementById("TABLE7").innerHTML = resolutor3;
+                    let cresolutor3 = RESOLAP3.map(item => item.CUSUARIOINC);
+                    document.getElementById("TABLE8").innerHTML = cresolutor3;
+
+
+                    let resolutor4 = RESOLAP4.map(item => item.USUARIOINC);
+                    document.getElementById("TABLE9").innerHTML = resolutor4;
+                    let cresolutor4 = RESOLAP4.map(item => item.CUSUARIOINC);
+                    document.getElementById("TABLE10").innerHTML = cresolutor4;
+
+
+
+                    /****************************************************************************/
+
+                    let ORGA = [
+                        info[0],
+                    ]
+                    let ORGA1 = [
+                        info[1],
+                    ]
+                    let ORGA2 = [
+                        info[2],
+                    ]
+                    let ORGA3 = [
+                        info[3],
+                    ]
+                    let ORGA4 = [
+                        info[4],
+                    ]
+                    let organi = ORGA.map(item => item.ORGANIZACIONReq);
+                    document.getElementById("TABLEORG1").innerHTML = organi;
+                    let corg = ORGA.map(item => item.countORG);
+                    document.getElementById("TABLEORG2").innerHTML = corg;
+
+
+                    let organi1 = ORGA1.map(item => item.ORGANIZACIONReq);
+                    document.getElementById("TABLEORG3").innerHTML = organi1;
+                    let corg1 = ORGA1.map(item => item.countORG);
+                    document.getElementById("TABLEORG4").innerHTML = corg1;
+
+
+                    let organi2 = ORGA2.map(item => item.ORGANIZACIONReq);
+                    document.getElementById("TABLEORG5").innerHTML = organi2;
+                    let corg2 = ORGA2.map(item => item.countORG);
+                    document.getElementById("TABLEORG6").innerHTML = corg2;
+
+
+                    let organi3 = ORGA3.map(item => item.ORGANIZACIONReq);
+                    document.getElementById("TABLEORG7").innerHTML = organi3;
+                    let corg3 = ORGA3.map(item => item.countORG);
+                    document.getElementById("TABLEORG8").innerHTML = corg3;
+
+
+                    let organi4 = ORGA4.map(item => item.ORGANIZACIONReq);
+                    document.getElementById("TABLEORG9").innerHTML = organi4;
+                    let corg4 = ORGA4.map(item => item.countORG);
+                    document.getElementById("TABLEORG10").innerHTML = corg4;
+
+                    /*************************************/
+
+
+                    let FONT = [
+                        info[0],
+                        info[1],
+                        info[2],
+                        info[3],
+                        info[4],
+
+                    ]
+
+
+
+                    /********************* CHARTS*******************************/
+                    function FuenteReportada(ctx) {
+                        const chart = new Chart(ctx, {
+                            type: 'doughnut',
+                            data: {
+                                labels: FONT.map(item => item.ORIGEN),
+                                datasets: [{
+                                    label: '2020',
+                                    data: FONT.map(item => item.CORIGEN),
+
+                                    backgroundColor: ['rgba(255, 99, 132)',
+                                        'rgba(54, 162, 235 )',
+                                        'rgba(255, 206, 86 )',
+                                        'rgba(75, 192, 192 )',
+                                        'rgba(153, 102, 255 )',
+                                        'rgba(255, 159, 64 )'
+                                    ],
+                                    hoverBackgroundColor: 'rgba(98, 17, 50,0.8)'
+                                }]
+
+                            }
+
+                        })
+                    }
+
+                    function renderfont() {
+                        const ctx = document.querySelector('#FONT').getContext('2d')
+                        FuenteReportada(ctx)
+                    }
+                    renderfont()
+
+                    /*************************************/
+
+                    /******************************************************************************/
+
+                    function readData() {
+
+                        var arraybuffer = oReq.response;
+
+                        var data = new Uint8Array(arraybuffer);
+                        var arr = new Array();
+                        for (var i = 0; i != data.length; ++i) arr[i] = String.fromCharCode(data[i]);
+                        var bstr = arr.join("");
+
+                        var workbook = XLSX.read(bstr, {
+                            type: "binary"
+                        });
+
+                        var first_sheet_name = workbook.SheetNames[2];
+
+                        var worksheet = workbook.Sheets[first_sheet_name];
+                        var info = XLSX.utils.sheet_to_json(worksheet, {
+                            raw: true
+                        });
+
+                        return info;
+
+                    }
+                }
+
+
+
+                oReq.send();
+            </script>
+        </div>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+
+</body>
+
+</html>
